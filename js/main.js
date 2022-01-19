@@ -37,7 +37,7 @@ $(document).ready(function() {
 					   subdomains:['mt0','mt1','mt2','mt3']
 					 });
 					googleSat.addTo(map);
-		$.getJSON("https://raw.githubusercontent.com/M-Sravanthi/StrandingTimeSlider/main/StrandingMap.geojson", function(json) {
+		$.getJSON("https://raw.githubusercontent.com/techforwildlife/StrandingTimeSlider/main/StrandingMap.geojson", function(json) {
 			var testlayer = L.geoJson(json,{
 
 				// By default, Leaflet draws geojson points as simple markers
