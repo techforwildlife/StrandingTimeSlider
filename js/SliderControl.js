@@ -66,56 +66,17 @@ L.Control.SliderControl = L.Control.extend({
 
         var options = this.options;
         this.options.markers = [];
-        this.options.unique_time_values = [];
-
+        
         //If a layer has been provided: calculate the min and max values for the slider
         if (this._layer) {
-            /*var index_temp = 0;
+            var index_temp = 0;
             this._layer.eachLayer(function (layer) {
                 options.markers[index_temp] = layer;
                 ++index_temp;
             });
             options.maxValue = index_temp - 1;
-            this.options = options;*/
-            
-            var flags = [], unique_values = [],len;
-            this._layer.eachLayer(function (layer) {
-    
-                if( flags[layer.feature.properties.time]) return;
-                flags[layer.feature.properties.time] = true;
-                unique_values.push(layer.feature.properties.time);
-                ++len;
-    
-            });
-            //console.log(unique_values);
-            
-            var all_features = [];
-            for (var i=0;i<unique_values.length;i++){
-                all_features[i] = [];
-            }
-            //console.log(all_features);
-    
-            //console.log(this._layer.getLayers().length)
-            var layers = this._layer.getLayers()
-            for(var i=0;i<layers.length;i++){
-    
-                //console.log(layers[i].feature.properties.time);
-                var index = unique_values.indexOf(layers[i].feature.properties.time)
-                //console.log(index);
-                all_features[index].push(layers[i]);
-    
-            }
-            console.log(all_features);
-    
-            for (var i=0;i<all_features.length;i++){
-                options.markers[i] = L.featureGroup(all_features[i]);
-            }
-            options.maxValue = all_features.length - 1;
             this.options = options;
-            this.options.unique_time_values = unique_values
             
-            
-            //console.log(unique_time)
         } else {
             console.log("Error: You have to specify a layer via new SliderControl({layer: your_layer});");
         }
@@ -167,7 +128,7 @@ L.Control.SliderControl = L.Control.extend({
                         // set by leaflet Vector Layers
                         if(_options.markers[ui.value].options.unique_time_values){
                             if(_options.markers[ui.value]) $('#slider-timestamp').html(
-                                _extractTimestamp(_options.markers[ui.value].options.unique_time_values, _options));
+                                _extractTimestamp(_options.markers[ui.value].this.options.unique_time_values, _options));
                         }else {
                             console.error("Time property "+ _options.timeAttribute +" not found in data");
                         }
@@ -220,7 +181,7 @@ L.Control.SliderControl = L.Control.extend({
             }
         });
         if (!_options.range && _options.alwaysShowDate) {
-            $('#slider-timestamp').html(_extractTimeStamp(_options.markers[index_start].options.unique_time_values, _options));
+            $('#slider-timestamp').html(_extractTimeStamp(_options.markers[index_start].this.options.unique_time_values, _options));
         }
         for (i = _options.minValue; i <= index_start; i++) {
             _options.map.addLayer(_options.markers[i]);
