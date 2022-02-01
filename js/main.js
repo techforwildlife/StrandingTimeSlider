@@ -1,12 +1,20 @@
 
 $(document).ready(function() {
 	
-    		var cities;	
-			var sliderControl = null;
+    			
+		var ur = [16.339983, 75.536438]
+			var ll = [14.731134, 72.364136]
+			var bounds = L.latLngBounds(ll, ur);
     		var map = L.map('map', { 
+			zoomControl: false,
     			center: [15.158,73.984 ],  
-    			zoom: 10,	
-    			minZoom: 4 
+    			zoom: 9,	
+    			minZoom: 4,
+			touchzoom:false,
+			scrollWheel: false,
+			dragging: false,
+			maxBounds: bounds
+
     		});
     	
     		L.tileLayer( 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {             
