@@ -103,9 +103,9 @@ $(document).ready(function() {
 				// By default, Leaflet draws geojson points as simple markers
 				// To alter this, the pointToLayer function needs to be used
 				pointToLayer: function(feature, latlng) {
-					//return L.CircleMarker(latlng,{// we use circle marker for the points
-					return L.marker(latlng, { 
-						icon:dolphin, //remove this and unhash above to get circle markers
+					return L.circleMarker(latlng,{// we use circle marker for the points
+					//return L.marker(latlng, { 
+						//icon:dolphin, //remove this and unhash above to get circle markers
 						fillColor: "#800000",  // fill color of the circles
 						color: '#800000',      // border color of the circles
 						weight: 0.7,             // circle line weight in pixels
