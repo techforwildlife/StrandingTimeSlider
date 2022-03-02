@@ -10,7 +10,8 @@ $(document).ready(function() {
 				zoomControl: false,
     			center: [15.158,73.984 ],  
     			zoom: 9,	
-    			minZoom: 4,
+    			minZoom: 7,
+			maxZoom:11,
 				touchzoom:false,
 				scrollWheel: false,
 				dragging: false,
@@ -158,8 +159,8 @@ $(document).ready(function() {
 			var baseLayers = {
 				//"Satellite":googleSat,
 				//"Google Map":googleStreets,
-				"WaterColor":stamen_watercolor,
-				"NatGeo": Esri_NatGeoWorldMap
+				"NatGeo": Esri_NatGeoWorldMap,
+				"WaterColor":stamen_watercolor
 				//"OpenStreetMap": osm
 			};
 			
